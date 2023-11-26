@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -6,6 +7,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
+@app.route('/create')
+def create():
+    return render_template('create.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
